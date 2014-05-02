@@ -14,24 +14,167 @@
 	<body id="body">
 		<header>
 			<h1><span id="title_MUSIX">MUSIX</span><span id="title_SPOTIFY">SPOTIFY</span></h1>
-			<div id="searchBar">
-				<input id="search" type="text" size="20" value="Search Music"/>
-				<button id="searchButton" type="button">Search</button>
-			</div>
 		</header>
 		<div id="main">
-			<button id="testLeft" type="button">Left</button>
-			<button id="testRight" type="button">Right</button>
+
 		</div>
-		<aside id="rightPanel">
-			<div id="info">
-				<span class="subtitle">Track Info</span>
+		<aside id="leftPanel">
+			<div class="titlebox">
+				<span class="leftsub">Search</span>
 			</div>
-			<hr>
+			<hr class="leftbreak">
+			<div id="searchBar">
+				<input id="search" type="search" size="20" value="Search Music"/>
+				<select id="searchType">
+					<option value="&q=" selected="selected">all</option>
+					<option value="&q_track=">track</option>
+					<option value="&q_artist=">artist</option>
+					<option value="&q_lyrics=">lyrics</option>
+				</select>
+				<button id="searchButton" type="button">Search</button>
+			</div>
+			<hr width="85%" color="#252525">
+			<div id="results" class="scrollbar">
+				<div class="result">
+					<img class="resultAlbum" src="images/album.png" alt="album art" width="60px" height="60px">
+					<div class="resultInfo">
+						<p>title</p>
+						<p>album</p>
+						<p>artist</p>
+					</div>
+				</div>
+				<div class="result">
+					<img class="resultAlbum" src="images/album.png" alt="album art" width="80px" height="80px">
+					<div class="resultInfo">
+						<p>title</p>
+						<p>album</p>
+						<p>artist</p>
+					</div>
+				</div>
+				<div class="result">
+					<img class="resultAlbum" src="images/album.png" alt="album art" width="80px" height="80px">
+					<div class="resultInfo">
+						<p>title</p>
+						<p>album</p>
+						<p>artist</p>
+					</div>
+				</div>
+				<div class="result">
+					<img class="resultAlbum" src="images/album.png" alt="album art" width="80px" height="80px">
+					<div class="resultInfo">
+						<p>title</p>
+						<p>album</p>
+						<p>artist</p>
+					</div>
+				</div>
+				<div class="result">
+					<img class="resultAlbum" src="images/album.png" alt="album art" width="80px" height="80px">
+					<div class="resultInfo">
+						<p>title</p>
+						<p>album</p>
+						<p>artist</p>
+					</div>
+				</div>
+				<div class="result">
+					<img class="resultAlbum" src="images/album.png" alt="album art" width="80px" height="80px">
+					<div class="resultInfo">
+						<p>title</p>
+						<p>album</p>
+						<p>artist</p>
+					</div>
+				</div>
+				<div class="result">
+					<img class="resultAlbum" src="images/album.png" alt="album art" width="80px" height="80px">
+					<div class="resultInfo">
+						<p>title</p>
+						<p>album</p>
+						<p>artist</p>
+					</div>
+				</div>
+				<div class="result">
+					<img class="resultAlbum" src="images/album.png" alt="album art" width="80px" height="80px">
+					<div class="resultInfo">
+						<p>title</p>
+						<p>album</p>
+						<p>artist</p>
+					</div>
+				</div>
+				<div class="result">
+					<img class="resultAlbum" src="images/album.png" alt="album art" width="80px" height="80px">
+					<div class="resultInfo">
+						<p>title</p>
+						<p>album</p>
+						<p>artist</p>
+					</div>
+				</div>
+				<div class="result">
+					<img class="resultAlbum" src="images/album.png" alt="album art" width="80px" height="80px">
+					<div class="resultInfo">
+						<p>title</p>
+						<p>album</p>
+						<p>artist</p>
+					</div>
+				</div>
+				<div class="result">
+					<img class="resultAlbum" src="images/album.png" alt="album art" width="80px" height="80px">
+					<div class="resultInfo">
+						<p>title</p>
+						<p>album</p>
+						<p>artist</p>
+					</div>
+				</div>
+				<div class="result">
+					<img class="resultAlbum" src="images/album.png" alt="album art" width="80px" height="80px">
+					<div class="resultInfo">
+						<p>title</p>
+						<p>album</p>
+						<p>artist</p>
+					</div>
+				</div>
+				<div class="result">
+					<img class="resultAlbum" src="images/album.png" alt="album art" width="80px" height="80px">
+					<div class="resultInfo">
+						<p>title</p>
+						<p>album</p>
+						<p>artist</p>
+					</div>
+				</div>
+				<div class="result">
+					<img class="resultAlbum" src="images/album.png" alt="album art" width="80px" height="80px">
+					<div class="resultInfo">
+						<p>title</p>
+						<p>album</p>
+						<p>artist</p>
+					</div>
+				</div>
+			</div>
+		</aside>
+		<aside id="rightPanel">
+			<div class="titlebox">
+				<span class="rightsub">Track Information</span>
+			</div>
+			<hr class="rightbreak">
+			<div id="trackInfo">
+				<div class="infoBlock">
+					<span class="rightsub">title</span>
+					<p>HelloWorld</p>
+				</div>
+				<div class="infoBlock">
+					<span class="rightsub">artist</span>
+					<p>MUSIXSPOTIFY</p>
+				</div>
+				<div class="infoBlock">
+					<span class="rightsub">album</span>
+					<p>Chrome</p>
+				</div>
+				<div class="infoBlock">
+					<span class="rightsub">release</span>
+					<p>Jan 1, 2000</p>
+				</div>
+			</div>
+			<hr id="albumbreak" class="rightbreak">
 			<img id="albumArt" src="images/album.png" alt="album art" width="250px" height="250px">
 		</aside>
-		<aside id="leftPanel">
-			Left Panel
-		</aside>
+		<iframe id="player" src="https://embed.spotify.com/?uri=spotify:track:4bz7uB4edifWKJXSDxwHcs" frameborder="0" allowtransparency="true"></iframe>
 	</body>
 </html>

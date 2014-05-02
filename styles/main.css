@@ -35,60 +35,23 @@ header h1 {
 	color: rgb(173, 255, 0);
 }
 
-#searchBar {
-	float: right;
-	margin: 10px;
-	display: inline-block;
-	z-index: 999;
-}
-
 #main {
 	position: relative;
 	top: 51px;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	width: 100%;
+	left: 20%;
+	width: 60%;
 	height: 100%;
 	padding: 10px;
 	overflow: auto;
 }
 
-.leftPanel-open #main{
-	left: 250px;
-}
-
-.rightPanel-open #main{
-	right: 250px;
-}
-
-.leftPanel-open #leftPanel {
-	left: 0;
-}
-
-.rightPanel-open #rightPanel {
-	right: 0;
-}
-
-#leftPanel, #main {
-	-webkit-transition: left 0.2s ease;
-  	-moz-transition: left 0.2s ease;
-  	transition: left 0.2s ease;
-}
-
-#rightPanel, #main {
-	-webkit-transition: right 0.2s ease;
-  	-moz-transition: right 0.2s ease;
-  	transition: right 0.2s ease;
-}
-
 #leftPanel {
 	position: fixed;
+	float: left;
 	top: 51px;
-	left: -255px;
+	left: 0px;
 	width: 250px;
 	height: 100%;
-	padding: 10px;
 	border: 1px;
 	color: rgb(200, 200, 200);
 	background-color: rgb(25, 25, 25);
@@ -97,10 +60,84 @@ header h1 {
 	-moz-box-shadow:    5px 0px 5px 0px rgba(0, 0, 0, 0.75);
 }
 
+.leftsub {
+	color: rgb(173, 255, 0);
+}
+
+.leftbreak {
+	position: absolute;
+	margin: 0;
+	width: 250px;
+	border-color: rgb(173, 255, 0);
+}
+
+#searchBar {
+	margin: 15px 10px 5px 10px;
+	display: inline-block;
+}
+
+#results {
+	height: 72%;
+	overflow-y: scroll;
+}
+#results::-webkit-scrollbar{
+	width:8px;
+	background-color:#333333;
+}
+#results::-webkit-scrollbar-thumb{
+	border-radius:10px;
+	background-color:#252525;
+}
+#results::-webkit-scrollbar-thumb:hover{
+	background-color:#999999;
+	border:1px solid #333333;
+}
+#results::-webkit-scrollbar-thumb:active{
+	background-color:#666666;
+	border:1px solid #333333;
+}
+#results::-webkit-scrollbar-track{
+	border-radius:10px;
+	-webkit-box-shadow:0 0 2px gray inset;
+}
+
+.result {
+	float: left;
+	width: 240px;
+	border: 1px;
+	border-style: solid;
+	border-color: #050505;
+	background-color: #101010;
+}
+
+.result:hover {
+	color: rgb(173, 255, 0);
+	border-color: rgb(173, 255, 0);
+}
+
+.result img {
+	float: left;
+	width: 60px;
+	height: 60px;
+}
+
+.resultInfo {
+	float: left;
+	margin: 2.5px 10px 2.5px 10px;
+	display: inline;
+}
+
+.resultInfo p {
+	margin: 0;
+	font-size: 12px;
+	overflow: hidden;
+}
+
 #rightPanel {
 	position: fixed;
+	float: right;
 	top: 51px;
-	right: -255px;
+	right: 0px;
 	width: 250px;
 	height: 100%;
 	border: 1px;
@@ -111,17 +148,46 @@ header h1 {
 	-moz-box-shadow:    -5px 0px 5px 0px rgba(0, 0, 0, 0.75);
 }
 
-#rightPanel img {
+.rightbreak {
 	position: absolute;
-	bottom: 51px;
+	margin: 0;
+	width: 250px;
+	border-color: rgb(255, 131, 0);
 }
 
-#rightPanel hr {
-	position: 
-	bottom: 301px;
-	border-color: #151515;
-}
-
-#info {
+#trackInfo {
+	position: absolute;
+	width: 250px;
 	padding: 10px;
+}
+
+.infoBlock {
+	margin: 5px 0 5px 0;
+}
+.rightsub, .infoBlock span {
+	color: rgb(255, 131, 0);
+}
+
+.infoBlock p {
+	display: inline;
+}
+
+#albumbreak {
+	bottom: 381px;
+}
+
+#albumArt {
+	position: absolute;
+	bottom: 131px;
+}
+
+.titlebox {
+	padding: 10px;
+}
+
+#player {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: 80px;
 }

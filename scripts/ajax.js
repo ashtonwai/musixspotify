@@ -25,8 +25,10 @@ $(document).ready(function() {
 // FUNCITONS
 function getResults(search) {
 	var url = MUSIXMATCH_URL;
+	var e = document.querySelector('#searchType');
+	var searchType = e.options[e.selectedIndex].value;
 	url += "track.search?";
-	url += "&q_artist=" + search;
+	url += searchType + search;
 	url += "&apikey=" + MUSIXMATCH_API_KEY;
 	url += "&format=jsonp";
 	console.log(url);
@@ -42,6 +44,6 @@ function onJSONLoaded(obj) {
 	//console.log(JSON.stringify(obj));
 	var results = obj.message.body.track_list;
 	for (var i=0; i<results.length; i++) {
-
+		
 	}
 }
