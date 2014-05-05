@@ -2,6 +2,10 @@
 	font-family: 'Open Sans', 'sans-serif';
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
+	user-select: none;
+ 	-webkit-user-select: none;
+  	-moz-user-select: none;
+  	-ms-user-select: none;
 }
 
 body {
@@ -108,11 +112,12 @@ header h1 {
 	border-style: solid;
 	border-color: #050505;
 	background-color: #101010;
+	overflow: hidden;
 }
 
 .result:hover {
 	color: rgb(173, 255, 0);
-	border-color: rgb(173, 255, 0);
+	background-color: #151515;
 }
 
 .result img {
