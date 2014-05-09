@@ -84,6 +84,12 @@ function onJSONLoaded(obj) {
 
 					result.addEventListener('click', function(e) {
 						var track_id = this.getAttribute('value');
+						var lyricsURL = MUSIXMATCH_URL;
+						lyricsURL += "track.lyrics.get?";
+						lyricsURL += "&track_id=" + track_id;
+						lyricsURL += "&format=jsonp";
+						lyricsURL += "&apikey=" + MUSIXMATCH_API_KEY;
+						console.log(lyricsURL);
 
 						for (var i=0; i<results.length; i++) {
 							if (results[i].track.track_id == track_id) {
@@ -93,6 +99,8 @@ function onJSONLoaded(obj) {
 								var coverart = document.querySelector('#albumArt');
 								var player = document.querySelector('#player');
 
+								var spotify_id = results[i].track.track_spotify_id;
+
 								infoTitle.innerHTML = results[i].track.track_name;
 								infoAlbum.innerHTML = results[i].track.album_name;
 								infoArtist.innerHTML = results[i].track.artist_name;
@@ -101,11 +109,23 @@ function onJSONLoaded(obj) {
 								} else {
 									coverart.setAttribute('src', results[i].track.album_coverart_350x350);
 								}
-
-								var spotify_id = results[i].track.track_spotify_id;
-								player.setAttribute('src', "https://embed.spotify.com/?uri=spotify:track:" + spotify_id);
 							} // end if
 						} // end for
+						player.setAttribute('src', "https://embed.spotify.com/?uri=spotify:track:" + spotify_id);
+						
+						$.ajax({
+							url: lyricsURL,
+							dataType: 'jsonp',
+							success: function(lyricsObj) {
+								var lyrics = lyricsObj.message.body.lyrics.lyrics_body;
+								var copyright = lyricsObj.message.body.lyrics.lyrics_copyright;
+
+								var main = document.querySelector('#main');
+								main.innerHTML = lyrics + copyright;
+
+								console.log(lyrics);
+							}
+						});
 					}); // end result listener
 				} // end for
 			} // end else
@@ -135,6 +155,6 @@ function onJSONLoaded(obj) {
 			console.log("Error 503 - Our system is a bit busy at the moment and your request can’t be satisfied.");
 			break;
 		default:
-			console.log("MORE ERRORS!! :(");
+			console.log("ERRORS!! :(");
 	}
 } // end onJSONLoaded
