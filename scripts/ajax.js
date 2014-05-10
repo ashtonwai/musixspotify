@@ -3,6 +3,8 @@
 // GLOBALS
 var MUSIXMATCH_URL = "http://api.musixmatch.com/ws/1.1/";
 var MUSIXMATCH_API_KEY = "36205906f20a5ef92a7ab93a1ec2f9b5";
+var YOUTUBE_URL = "https://www.googleapis.com/youtube/v3/";
+var YOUTUBE_API_KEY = "AIzaSyDGeZnNQRKQC5-C6ULLlJf6dtKRUZE9A8o";
 
 // READY FUNCTION
 $(document).ready(function() {
@@ -64,11 +66,12 @@ function onJSONLoaded(obj) {
 					var artist = document.createElement('p');
 					var em = document.createElement('em');
 
-					result.setAttribute('value', track_id);
 					title.innerHTML = track_name;
 					em.innerHTML = album_name;
 					artist.innerHTML = artist_name;
 					cover.setAttribute('src', coverart);
+					result.setAttribute('value', track_id);
+					result.setAttribute('name', artist_name + " " + track_name);
 					
 					resultsdiv.appendChild(result);
 					result.appendChild(cover);
@@ -89,7 +92,14 @@ function onJSONLoaded(obj) {
 						lyricsURL += "&track_id=" + track_id;
 						lyricsURL += "&format=jsonp";
 						lyricsURL += "&apikey=" + MUSIXMATCH_API_KEY;
-						console.log(lyricsURL);
+						//console.log(lyricsURL);
+
+						var youtubeURL = YOUTUBE_URL;
+						youtubeURL += "search?part=snippet";
+						youtubeURL += "&q=" + encodeURIComponent(this.getAttribute('name'));
+						youtubeURL += "&type=video";
+						youtubeURL += "&key=" + YOUTUBE_API_KEY;
+						console.log(youtubeURL);
 
 						for (var i=0; i<results.length; i++) {
 							if (results[i].track.track_id == track_id) {
@@ -111,21 +121,11 @@ function onJSONLoaded(obj) {
 								}
 							} // end if
 						} // end for
+
 						player.setAttribute('src', "https://embed.spotify.com/?uri=spotify:track:" + spotify_id);
 						
-						$.ajax({
-							url: lyricsURL,
-							dataType: 'jsonp',
-							success: function(lyricsObj) {
-								var lyrics = lyricsObj.message.body.lyrics.lyrics_body;
-								var copyright = lyricsObj.message.body.lyrics.lyrics_copyright;
-
-								var main = document.querySelector('#main');
-								main.innerHTML = lyrics + copyright;
-
-								console.log(lyrics);
-							}
-						});
+						lyricsAJAX(lyricsURL);
+						youtubeAJAX(youtubeURL);
 					}); // end result listener
 				} // end for
 			} // end else
@@ -158,3 +158,30 @@ function onJSONLoaded(obj) {
 			console.log("ERRORS!! :(");
 	}
 } // end onJSONLoaded
+
+function lyricsAJAX(url) {
+	$.ajax({
+		url: url,
+		dataType: 'jsonp',
+		success: function(lyricsObj) {
+			var lyrics = lyricsObj.message.body.lyrics.lyrics_body;
+			var copyright = lyricsObj.message.body.lyrics.lyrics_copyright;
+
+			var main = document.querySelector('#main');
+			main.innerHTML = lyrics + copyright;
+			//console.log(lyrics);
+		}
+	});
+}
+
+function youtubeAJAX(url) {
+	$.ajax({
+		url: url,
+		dataType: 'jsonp',
+		success: function(youtubeObj) {
+			var videoId = youtubeObj.items[0].id.videoId;
+			var video = document.querySelector('#video');
+			video.setAttribute('src', "http://youtube.com/embed/" + videoId);
+		}
+	});
+}

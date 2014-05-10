@@ -15,9 +15,7 @@
 		<header>
 			<h1><span id="title_MUSIX">MUSIX</span><span id="title_SPOTIFY">SPOTIFY</span></h1>
 		</header>
-		<div id="main">
-
-		</div>
+		<div id="main"></div>
 		<aside id="leftPanel">
 			<div class="titlebox">
 				<span class="leftsub">Search</span>
@@ -36,7 +34,7 @@
 			<hr width="85%" color="#252525">
 			<div id="results" class="scrollbar">
 				<!--
-				<div class="result">
+				<div class="result" value="">
 					<img class="resultAlbum" src="images/album.png" alt="album art" width="60px" height="60px">
 					<div class="resultInfo">
 						<p>title</p>
@@ -49,21 +47,26 @@
 		</aside>
 		<aside id="rightPanel">
 			<div class="titlebox">
+				<span class="rightsub">Music Video</span>
+			</div>
+			<hr class="rightbreak">
+			<iframe id="video" src="http://youtube.com/embed/" width="250px" frameBorder="0"></iframe>
+			<div class="titlebox">
 				<span class="rightsub">Track Information</span>
 			</div>
 			<hr class="rightbreak">
 			<div id="trackInfo">
 				<div class="infoBlock">
 					<span class="rightsub">title</span>
-					<p id="infoTitle">HelloWorld</p>
+					<p id="infoTitle"></p>
 				</div>
 				<div class="infoBlock">
 					<span class="rightsub">artist</span>
-					<p id="infoArtist">MUSIXSPOTIFY</p>
+					<p id="infoArtist"></p>
 				</div>
 				<div class="infoBlock">
 					<span class="rightsub">album</span>
-					<p id="infoAlbum">Chrome</p>
+					<p id="infoAlbum"></p>
 				</div>
 			</div>
 			<hr id="albumbreak" class="rightbreak">
