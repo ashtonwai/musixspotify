@@ -31,6 +31,24 @@ header h1 {
 	display: inline-block;
 }
 
+nav {
+	float: right;
+	margin: 12px;
+	font-weight: 300;
+	list-style-type: none;
+}
+
+nav a {
+	margin: 5px;
+	padding: 10px;
+	display: inline;
+	color: rgb(125, 125, 125);
+}
+
+nav a:hover {
+	color: rgb(173, 255, 0);
+}
+
 #title_MUSIX {
 	color: rgb(255, 131, 0);
 }
@@ -63,6 +81,9 @@ header h1 {
 	box-shadow:         5px 0px 5px 0px rgba(0, 0, 0, 0.75);
 	-webkit-box-shadow: 5px 0px 5px 0px rgba(0, 0, 0, 0.75);
 	-moz-box-shadow:    5px 0px 5px 0px rgba(0, 0, 0, 0.75);
+	-webkit-transition: left 0.2s ease;
+  	-moz-transition: left 0.2s ease;
+ 	transition: left 0.2s ease;
 }
 
 .leftsub {
@@ -113,8 +134,41 @@ header h1 {
 	border-style: solid;
 	border-color: #050505;
 	background-color: #101010;
-	overflow: hidden;
+	-webkit-animation: fadein 1s; 	/* Safari and Chrome */
+    -moz-animation: fadein 1s;		/* Firefox */
+    -ms-animation: fadein 1s; 		/* Internet Explorer */
+    -o-animation: fadein 1s; 		/* Opera */
+    animation: fadein 1s;
 }
+
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Firefox */
+@-moz-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Safari and Chrome */
+@-webkit-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Internet Explorer */
+@-ms-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}​
+
+/* Opera */
+@-o-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}​
 
 .result:hover {
 	color: rgb(173, 255, 0);
@@ -175,6 +229,7 @@ header h1 {
 }
 
 .infoBlock p {
+	font-weight: 300;
 	display: inline;
 }
 
@@ -197,3 +252,8 @@ header h1 {
 	width: 100%;
 	height: 80px;
 }
+
+a:link {text-decoration: none;}
+a:hover {text-decoration: none;}
+a:visited {text-decoration: none;}
+a:active {text-decoration: none;}

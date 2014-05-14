@@ -19,6 +19,12 @@ $(document).ready(function() {
 			getResults(encodeURIComponent(search));
 		}
 	});
+
+	$('.doc').on('click', function(e) {
+		var leftPanel = document.querySelector('#leftPanel');
+		leftPanel.className = "panel-close";
+		console.log('clicked');
+	});
 }); // end ready
 
 // AJAX
@@ -49,6 +55,10 @@ function lyricsAJAX(url) {
 			var main = document.querySelector('#main');
 			main.innerHTML = lyrics + copyright;
 			//console.log(lyrics);
+
+			var scriptURL = lyricsObj.message.body.lyrics.script_tracking_url;
+			var script = document.querySelectorAll('script')[2];
+			script.setAttribute('src', scriptURL);
 		}
 	});
 } // end lyricsAJAX()
@@ -161,7 +171,7 @@ function returnResults(obj) {
 				youtubeURL += "&q=" + encodeURIComponent(this.getAttribute('name'));
 				youtubeURL += "&type=video";
 				youtubeURL += "&key=" + YOUTUBE_API_KEY;
-				//console.log(youtubeURL);
+				console.log(youtubeURL);
 				youtubeAJAX(youtubeURL);
 
 				for (var i=0; i<results.length; i++) {
