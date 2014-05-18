@@ -13,6 +13,7 @@ $(document).ready(function() {
 		getResults(encodeURIComponent(search));
 	}); //  end search button listener
 
+	// enable pressing ENTER key to start search
 	$('#search').keypress(function(e) {
 		if (e.keyCode == 13) {
 			var search = $('#search').val();
@@ -80,6 +81,7 @@ function youtubeAJAX(url) {
 function onJSONLoaded(obj) {
 	//console.log(JSON.stringify(obj));
 
+	// check status code
 	var statusCode = obj.message.header.status_code;
 	switch (statusCode) {
 		case 200:
@@ -118,17 +120,20 @@ function returnResults(obj) {
 	var results = obj.message.body.track_list;
 	var resultsdiv = document.querySelector('#results');
 
+	// handle results
 	if (results.length == 0)
 		resultsdiv.innerHTML = "no results found";
 	else {
 		resultsdiv.innerHTML = "";
 		for (var i=0; i<results.length; i++) {
+			// getting information from json
 			var track_id = results[i].track.track_id;
 			var track_name = results[i].track.track_name;
 			var album_name = results[i].track.album_name;
 			var artist_name = results[i].track.artist_name;
 			var coverart = results[i].track.album_coverart_100x100;
 
+			// creating elements and displaying results
 			var result = document.createElement('div');
 			var cover = document.createElement('img');
 			var info = document.createElement('div');
@@ -156,7 +161,9 @@ function returnResults(obj) {
 			cover.className = "resultAlbum";
 			info.className = "resultInfo";
 
+			// handle result clicked
 			result.addEventListener('click', function(e) {
+				// search with track id of result
 				var track_id = this.getAttribute('value');
 				var lyricsURL = MUSIXMATCH_URL;
 				lyricsURL += "track.lyrics.get?";
@@ -166,6 +173,7 @@ function returnResults(obj) {
 				//console.log(lyricsURL);
 				lyricsAJAX(lyricsURL);
 
+				// search youtube with result name
 				var youtubeURL = YOUTUBE_URL;
 				youtubeURL += "search?part=snippet";
 				youtubeURL += "&q=" + encodeURIComponent(this.getAttribute('name'));
@@ -174,6 +182,7 @@ function returnResults(obj) {
 				console.log(youtubeURL);
 				youtubeAJAX(youtubeURL);
 
+				// creating and displaying results
 				for (var i=0; i<results.length; i++) {
 					if (results[i].track.track_id == track_id) {
 						var infoTitle = document.querySelector('#infoTitle');
